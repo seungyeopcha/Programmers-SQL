@@ -1,0 +1,37 @@
+-- 모든레코드 조회
+SELECT *
+from animal_ins
+order by animal_id;
+
+--역순정렬
+SELECT name, datetime
+from animal_ins
+order by animal_id desc;
+
+--아픈동물찾기
+SELECT animal_id, name
+from animal_ins
+where intake_condition='Sick'
+order by animal_id;
+
+--어린동물찾기
+SELECT animal_id, name
+from animal_ins
+where intake_condition!='Aged'
+order by animal_id;
+
+-동물아이디와 이름
+SELECT animal_id, name
+from animal_ins
+order by animal_id;
+
+--여러기준으로 정렬하기
+SELECT animal_id, name, datetime
+from animal_ins
+order by name,datetime desc;
+
+--상위 n개 레코드
+SELECT name
+from animal_ins
+order by datetime
+limit 1;
