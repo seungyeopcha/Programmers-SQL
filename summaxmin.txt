@@ -1,0 +1,15 @@
+SELECT datetime
+from animal_ins
+order by datetime desc
+limit 1;
+
+SELECT datetime
+from animal_ins
+order by datetime
+limit 1;
+
+SELECT count(*) count
+from animal_ins;
+
+SELECT count(distinct name) count
+from animal_ins;
