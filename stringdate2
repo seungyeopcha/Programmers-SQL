@@ -8,3 +8,11 @@ SELECT animal_id, name
 from animal_ins
 where animal_type='Dog' and name like '%EL%'
 order by name;
+
+-- 중성화 여부파악
+SELECT animal_id, name,
+    case when sex_upon_intake like 'Neutered%' then 'O' 
+        when  sex_upon_intake like 'Spayed%' then 'O'
+        else 'X' end 중성화
+from animal_ins
+order by animal_id;
