@@ -16,3 +16,11 @@ SELECT animal_id, name,
         else 'X' end 중성화
 from animal_ins
 order by animal_id;
+
+-- 입양을 간 동물 중, 보호 기간이 가장 길었던 동물 두 마리의 아이디와 이름을 조회
+SELECT i.animal_id, i.name
+from animal_ins as i
+inner join animal_outs as o
+on i.animal_id=o.animal_id
+order by i.datetime-o.datetime asc
+limit 2;
