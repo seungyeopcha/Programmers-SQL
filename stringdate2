@@ -24,3 +24,8 @@ inner join animal_outs as o
 on i.animal_id=o.animal_id
 order by i.datetime-o.datetime asc
 limit 2;
+
+-- datetime to date
+SELECT animal_id, name, date_format(datetime, '%Y-%m-%d') 날짜
+from animal_ins
+order by animal_id;
