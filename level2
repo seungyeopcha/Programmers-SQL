@@ -1,0 +1,72 @@
+-- 고양이와 개 몇마리
+SELECT animal_type,count(animal_id)
+from animal_ins
+group by animal_type
+order by animal_type;
+
+--
+-- 동명동물수 찾기
+SELECT NAME,count(name) COUNT
+from animal_ins
+where name is not null
+group by(name)
+HAVING COUNT(NAME) > 1
+order by name;
+
+-- 입양시각구하기
+SELECT hour(datetime) hour, count(hour(datetime)) count
+from animal_outs
+group by hour
+having 8<hour and hour<20
+order by hour;
+
+-- null 처리하기
+SELECT animal_type, ifnull(name,'No name'), sex_upon_intake
+from animal_ins
+order by animal_id;
+
+-- 루시와 엘라찾기
+SELECT animal_id, name, sex_upon_intake
+from animal_ins
+where name in ('Lucy','Ella','Pickle','Rogan','Sabrina','Mitty');
+
+-- 이름에 el이 들어가는 동물 찾기
+SELECT animal_id, name
+from animal_ins
+where animal_type='Dog' and name like '%EL%'
+order by name;
+
+-- 중성화 여부파악
+SELECT animal_id, name,
+    case when sex_upon_intake like 'Neutered%' then 'O' 
+        when  sex_upon_intake like 'Spayed%' then 'O'
+        else 'X' end 중성화
+from animal_ins
+order by animal_id;
+
+-- 입양을 간 동물 중, 보호 기간이 가장 길었던 동물 두 마리의 아이디와 이름을 조회
+SELECT i.animal_id, i.name
+from animal_ins as i
+inner join animal_outs as o
+on i.animal_id=o.animal_id
+order by i.datetime-o.datetime asc
+limit 2;
+
+-- datetime to date
+SELECT animal_id, name, date_format(datetime, '%Y-%m-%d') 날짜
+from animal_ins
+order by animal_id;
+
+--최솟값구하기
+SELECT datetime
+from animal_ins
+order by datetime
+limit 1;
+
+--수 구하기
+SELECT count(*) count
+from animal_ins;
+
+--중복제거
+SELECT count(distinct name) count
+from animal_ins;
