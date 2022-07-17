@@ -1,1 +1,6 @@
-
+-- 우유와 요거트가 담긴 장바구니
+SELECT yogurt.cart_id
+from (select cart_id from cart_products where name like 'Yogurt') as yogurt 
+inner join (select cart_id from cart_products where name like 'Milk') as milk
+on yogurt.cart_id = milk.cart_id
+order by yogurt.cart_id;
