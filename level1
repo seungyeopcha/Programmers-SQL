@@ -2,3 +2,9 @@
 SELECT *
 from animal_ins
 order by animal_id;
+
+-- 최댓값 구하기
+SELECT datetime
+from animal_ins
+order by datetime desc
+limit 1;
