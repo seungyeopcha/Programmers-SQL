@@ -25,3 +25,9 @@ SELECT animal_id
 from animal_ins
 where name is not null
 order by animal_id;
+
+-- 아픈 동물 찾기
+SELECT animal_id, name
+from animal_ins
+where intake_condition='Sick'
+order by animal_id;
